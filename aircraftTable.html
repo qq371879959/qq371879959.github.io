@@ -45,9 +45,9 @@
 
     
     #updatedTime {
-    border: 1px solid black;
+    border: 1px solid gray;
     text-align: right;
-    font-size: 20px;
+    font-size: 16px;
     padding-top: 8px;
     padding-bottom: 8px;
     }
@@ -972,45 +972,48 @@
     const companyFilter = document.getElementById('company');
     const tableRows = document.querySelectorAll('#aircraftTable tbody tr');
 
-    
     // 搜索飞机号
     searchInput.addEventListener('input', function () {
-    const filterText = this.value.trim().toLowerCase();
-    
-    tableRows.forEach(row => {
-        const aircraftNumberCell = row.querySelector('td:first-child');
+      const filterText = this.value.trim().toLowerCase();
+
+      tableRows.forEach((row) => {
+        const aircraftNumberCell = row.cells[0]; // 第一列
         const aircraftNumber = aircraftNumberCell.textContent.trim().toLowerCase();
-        
-        if (filterText === '' || aircraftNumber.includes(filterText)) {
-        row.style.display = '';
-        aircraftNumberCell.innerHTML = aircraftNumber.replace(new RegExp('<span class="highlight">', 'gi'), '').replace(new RegExp('</span>', 'gi'), ''); // 清除之前的高亮标记
-        
-        if (filterText !== '') {
-            aircraftNumberCell.innerHTML = aircraftNumberCell.innerHTML.replace(new RegExp(filterText, 'gi'), match => `<span class="highlight">${match}</span>`); // 对匹配的内容进行高亮标记
-        }
+
+        if (aircraftNumber.indexOf(filterText) !== -1 || filterText === '') {
+          row.style.display = '';
+          highlightMatches(aircraftNumberCell, filterText);
         } else {
-        row.style.display = 'none';
+          row.style.display = 'none';
         }
-    });
+      });
 
-    const tableRows2 = document.querySelectorAll('#tableSATCOMlist tbody tr'); // 第二个表格的行
+      const tableRows2 = document.querySelectorAll('#tableSATCOMlist tbody tr'); // 第二个表格的行
 
-    tableRows2.forEach(row => {
-        const contentCell = row.querySelector('td:nth-child(2)'); // 取第二列
+      tableRows2.forEach((row) => {
+        const contentCell = row.cells[1]; // 第二列
         const content = contentCell.textContent.trim().toLowerCase();
 
-        if (filterText === '' || content.includes(filterText)) {
-        row.style.display = '';
-        contentCell.innerHTML = content.replace(new RegExp('<span class="highlight">', 'gi'), '').replace(new RegExp('</span>', 'gi'), ''); // 清除之前的高亮标记
-        
-        if (filterText !== '') {
-            contentCell.innerHTML = contentCell.innerHTML.replace(new RegExp(filterText, 'gi'), match => `<span class="highlight">${match}</span>`); // 对匹配的内容进行高亮标记
-        }
+        if (content.indexOf(filterText) !== -1 || filterText === '') {
+          row.style.display = '';
+          highlightMatches(contentCell, filterText);
         } else {
-        row.style.display = 'none';
+          row.style.display = 'none';
         }
+      });
     });
-    });
+
+
+
+    function highlightMatches(cell, filterText) {
+      if (filterText !== '') {
+        const regex = new RegExp(filterText, 'gi');
+        const highlightedText = cell.textContent.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+        cell.innerHTML = highlightedText;
+      } else {
+        cell.innerHTML = cell.textContent;
+      }
+    }
 
 
 
