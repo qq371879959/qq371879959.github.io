@@ -1,64 +1,76 @@
-
-<html >
+<!DOCTYPE html>
+<html>
 
 <head>
   <meta charset="UTF-8">
   <title>机坪小工具</title>
 
+  <link rel="stylesheet" href="styles.css">
+
+
   <style type="text/css">
-    .mainContainer{
+    .mainContainer {
       color: red;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       margin-left: 5px;
-      float: right;
     }
 
-    .subContainer{
+    .subContainer {
       color: red;
       margin-left: 10px;
-      float: right;
+      margin-bottom: 20px;
+      text-align: center;
+      flex: 1 0 calc(25% - 20px); /* 桌面端每行四个窗格 */
     }
 
-    a,p{
+    a,
+    p {
       color: red;
       margin-left: 0px;
-      text-align: center;
     }
 
+    /* 手机端的媒体查询 */
+    @media only screen and (max-width: 767px) {
+      .subContainer {
+        flex: 1 0 calc(33.33% - 20px); /* 手机端每行三个窗格 */
+      }
+    }
   </style>
+
 
   <script type="text/javascript">
   </script>
 </head>
 
-
-<div class="mainContainer">
+<body>
+  <div class="mainContainer">
     <a class="subContainer" href="https://www.720yun.com/t/6c7jurmyey6#scene_id=25627624" target="_blank">
-      <img src="sucai\sucai_cockpit.jpg">
+      <img src="sucai/sucai_cockpit.jpg">
       <p>驾驶舱</p>
     </a>
 
     <a class="subContainer" href="https://www.720yun.com/t/6c7jurmyey6#scene_id=21424142" target="_blank">
-      <img src="sucai\sucai_wheelwell.jpg">
+      <img src="sucai/sucai_wheelwell.jpg">
       <p>轮舱</p>
     </a>
 
     <a class="subContainer" href="kuaisuchuli.html" target="_blank">
-      <img src="sucai\sucai_kuaisuchuli.jpg">
+      <img src="sucai/sucai_kuaisuchuli.jpg">
       <p>快速处理</p>
     </a>
 
-    <a class="subContainer"  href="jipingnaxieshi.html" target="_blank">
-      <img src="sucai\sucai_suoyin.jpg">
+    <a class="subContainer" href="jipingnaxieshi.html" target="_blank">
+      <img src="sucai/sucai_suoyin.jpg">
       <p>机坪那些事</p>
     </a>
-
-</div>
-
-
-
-
-
-
-
+    
+    <a class="subContainer" href="aircraftTable.html" target="_blank">
+      <img src="sucai/sucai_aircraftTable.jpg">
+      <p>卫星电话</p>
+    </a>
+  </div>
+</body>
 
 </html>
