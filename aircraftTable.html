@@ -78,8 +78,11 @@
     /********************************/
     /********** 电脑端 ***************/
     /********************************/
-
     body.desktop #filterBox {
+    display: flex;
+    flex-direction: row; /* 将控件横向排列 */
+    justify-content: center; /* 居中显示 */
+    align-items: center; /* 垂直居中 */
     margin: 10px auto; /* 居中显示并增加上下间距 */
     padding: 10px; /* 增加内边距 */
     text-align: center; /* 在桌面上居中显示 */
@@ -88,27 +91,76 @@
     body.desktop #filterBox input[type="text"],
     body.desktop #filterBox select,
     body.desktop #filterBox button {
-    font-size: 18px; /* 增大字体大小 */
-    margin: 8px; /* 调整控件之间的间距 */
-    width: 80%; /* 控件宽度为父容器的80% */
-    max-width: 300px; /* 最大宽度限制，避免过大 */
-    height: 40px; /* 控件高度 */
+      flex: 1; /* 让所有控件均匀占据可用空间 */
+      text-align: center;
+      font-size: 18px; /* 增大字体大小 */
+      margin: 8px; /* 调整控件之间的间距 */
+      max-width: 300px; /* 最大宽度限制，避免过大 */
+      height: 40px; /* 控件高度 */
     }
+    
+    body.desktop #aircraftTable th,
+    body.desktop #aircraftTable td {
+      font-size: 28px; /* 修改为适合移动端的字体大小 */
+      padding: 8px; /* 增加单元格内边距，提高可读性 */
+    }
+
+    /* 参照移动端格式调整其他样式 */
+    body.desktop #aircraftTable th {
+      background-color: #75acff; /* 设置表头背景色 */
+      font-weight: bold; /* 加粗表头文字 */
+    }
+
 
     /********************************/
     /********** 移动端 ***************/
     /********************************/
-
-    body.mobile #filterBox {
-        padding: 20px; /* 减少内边距 */
-    }
-
     body.mobile #filterBox input[type="text"],
     body.mobile #filterBox select,
     body.mobile #filterBox button {
-        width: 100%; /* 在移动设备上铺满容器 */
-        max-width: none; /* 移除最大宽度限制 */
-        height: 50px; /* 调整高度 */
+      flex-basis: calc(50% - 20px); /* 两个控件一行，考虑间隔 */
+      max-width: calc(50% - 20px); /* 控件最大宽度 */
+      font-size: 30px;
+      height: 60px;
+      margin: 10px; /* 控件之间的间距 */
+      line-height: 60px; /* 文字垂直居中显示 */
+      text-align: center; /* 文字水平居中显示 */
+      /* 添加其他样式，比如字体大小、颜色等 */
+    }
+
+    
+    body.mobile #aircraftTable th,
+    body.mobile #aircraftTable td {
+      font-size: 28px; /* 修改为适合移动端的字体大小 */
+      padding: 8px; /* 增加单元格内边距，提高可读性 */
+    }
+
+    /* 参照移动端格式调整其他样式 */
+    body.mobile #aircraftTable th {
+      background-color: #75acff; /* 设置表头背景色 */
+      font-weight: bold; /* 加粗表头文字 */
+    }
+
+    body.mobile #aircraftTable td {
+      border-bottom: 1px solid #ddd; /* 添加单元格底部边框线 */
+    }
+
+    /* 适应移动设备的表格列宽度设置 */
+    body.mobile #aircraftTable colgroup col:first-child {
+      width: auto; /* 第一列自适应宽度 */
+    }
+
+    body.mobile #aircraftTable colgroup col {
+      width: 50%; /* 其他列平均分配宽度 */
+    }
+
+
+    /* flex 容器设置，居中显示 */
+    body.mobile #filterBox {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
     
     body.mobile .modal-content {
@@ -212,7 +264,7 @@
 
     <table id="aircraftTable">
         <colgroup>
-            <col style="width: 100px;"> <!-- 第一列宽度为 200 像素 -->
+            <col style="width: 150px;"> <!-- 第一列宽度为 200 像素 -->
             <!-- 其他列 -->
         </colgroup>
         <thead>
@@ -1200,6 +1252,7 @@
     window.onload = function() {
       //设置body为电脑或桌面样式
       if (IsPC()) {
+      //if (0) {
         document.body.classList.add('desktop');
       } else {
         document.body.classList.add('mobile');

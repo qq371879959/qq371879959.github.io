@@ -7,70 +7,90 @@
 
   <link rel="stylesheet" href="styles.css">
 
+  
 
   <style type="text/css">
     .mainContainer {
       color: red;
       display: flex;
+      margin-left: 5%;
+      margin-right: 5%;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 10px; /* 水平间距 */
       flex-wrap: wrap;
-      justify-content: flex-start;
-      margin-left: 5px;
     }
 
     .subContainer {
       color: red;
-      margin-left: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 50px;
       text-align: center;
-      flex: 1 0 calc(25% - 20px); /* 桌面端每行四个窗格 */
+      position: relative;
+      flex: 1 0 auto; /* 自适应宽度 */
     }
 
-    a,
-    p {
-      color: red;
-      margin-left: 0px;
+    .subContainer img {
+      width: 250px;
+      height: 250px; /* 设置图片最大高度 */
+      object-fit: contain; /* 图片缩放以适应容器 */
     }
 
-    /* 手机端的媒体查询 */
-    @media only screen and (max-width: 767px) {
-      .subContainer {
-        flex: 1 0 calc(33.33% - 20px); /* 手机端每行三个窗格 */
-      }
-    }
   </style>
+</a>
 
 
-  <script type="text/javascript">
-  </script>
+
+
+
 </head>
 
+
+
 <body>
+  
+
   <div class="mainContainer">
-    <a class="subContainer" href="https://www.720yun.com/t/6c7jurmyey6#scene_id=25627624" target="_blank">
-      <img src="sucai/sucai_cockpit.jpg">
-      <p>驾驶舱</p>
-    </a>
-
-    <a class="subContainer" href="https://www.720yun.com/t/6c7jurmyey6#scene_id=21424142" target="_blank">
-      <img src="sucai/sucai_wheelwell.jpg">
-      <p>轮舱</p>
-    </a>
-
-    <a class="subContainer" href="kuaisuchuli.html" target="_blank">
-      <img src="sucai/sucai_kuaisuchuli.jpg">
-      <p>快速处理</p>
-    </a>
-
-    <a class="subContainer" href="jipingnaxieshi.html" target="_blank">
-      <img src="sucai/sucai_suoyin.jpg">
-      <p>机坪那些事</p>
-    </a>
     
-    <a class="subContainer" href="aircraftTable.html" target="_blank">
+    <div class="subContainer">
+      <a href="panels.html" target="_blank">
+      <img src="sucai/sucai_cockpit_1.jpg">
+      <p>A320 & B737 驾驶舱面板</p></a>
+    </div>
+
+    <div class="subContainer">
+      <a href="https://www.720yun.com/t/6c7jurmyey6#scene_id=25627624" target="_blank">
+      <img src="sucai/sucai_cockpit.jpg">
+      <p>驾驶舱【VR】</p></a>
+    </div>
+
+    <div class="subContainer">
+      <a href="https://www.720yun.com/t/6c7jurmyey6#scene_id=21424142" target="_blank">
+      <img src="sucai/sucai_wheelwell.jpg">
+      <p>轮舱【VR】</p></a>
+    </div>
+
+    <div class="subContainer">
+      <a href="kuaisuchuli.html" target="_blank">
+      <img src="sucai/sucai_kuaisuchuli.jpg">
+      <p>快速处理</p></a>
+    </div>
+
+    <div class="subContainer">
+      <a href="jipingnaxieshi.html" target="_blank">
+      <img src="sucai/sucai_suoyin.jpg">
+      <p>机坪那些事</p></a>
+    </div>
+
+    <div class="subContainer">
+      <a href="aircraftTable.html" target="_blank">
       <img src="sucai/sucai_aircraftTable.jpg">
-      <p>卫星电话</p>
-    </a>
+      <p>卫星电话查询</p></a>
+    </div>
+
   </div>
 </body>
+
+
+
 
 </html>
