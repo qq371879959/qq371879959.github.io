@@ -5,12 +5,22 @@
   <meta charset="UTF-8">
   <title>机坪小工具</title>
 
-  <link rel="stylesheet" href="styles.css">
 
   
 
   <style type="text/css">
-    .mainContainer {
+    
+    /* 共同样式 */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    
+    /********************************/
+    /********** 电脑端 ***************/
+    /********************************/
+    body.desktop .mainContainer {
       color: red;
       display: flex;
       margin-left: 5%;
@@ -21,7 +31,7 @@
       flex-wrap: wrap;
     }
 
-    .subContainer {
+    body.desktop .subContainer {
       color: red;
       margin-bottom: 50px;
       text-align: center;
@@ -29,17 +39,68 @@
       flex: 1 0 auto; /* 自适应宽度 */
     }
 
-    .subContainer img {
+    body.desktop .subContainer img {
       width: 250px;
       height: 250px; /* 设置图片最大高度 */
       object-fit: contain; /* 图片缩放以适应容器 */
     }
 
+    /********************************/
+    /********** 移动端 ***************/
+    /********************************/
+    
+    body.mobile .mainContainer {
+      display: flex;
+      margin: 0 auto;
+      max-width: 1200px; /* 设置最大宽度 */
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px; /* 水平间距 */
+      flex-wrap: wrap;
+      padding: 15px; /* 外边距 */
+    }
+
+    body.mobile .subContainer {
+      margin-bottom: 20px; /* 调整元素间距 */
+      text-align: center;
+      position: relative;
+      flex: 1 1 45%; /* 设置每行显示两个元素 */
+      max-width: calc(50% - 10px); /* 设置每行显示两个元素，减去间距 */
+    }
+
+    body.mobile .subContainer img {
+      width: 90%;
+      height: auto;
+      object-fit: contain;
+    }
   </style>
-</a>
 
+  <script>
+      // 在页面加载完成时应用默认筛选
+      window.onload = function() {
+        //设置body为电脑或桌面样式
+        //if (IsPC()) {
+        if (0) {
+          document.body.classList.add('desktop');
+        } else {
+          document.body.classList.add('mobile');
+        }
+      };
 
-
+      function IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+          if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+          }
+        }
+        return flag;
+      }
+      
+  </script>
 
 
 </head>
