@@ -8,7 +8,10 @@
   
   <style>
 
-    /* 共同样式 */
+    
+    /********************************/
+    /********** 共同样式 *************/
+    /********************************/
     body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -72,16 +75,19 @@
     padding: 10px 20px; /* 增加按钮内边距 */
     }
 
+    /********************************/
+    /********** 电脑端 ***************/
+    /********************************/
 
-    #filterBox {
+    body.desktop #filterBox {
     margin: 10px auto; /* 居中显示并增加上下间距 */
     padding: 10px; /* 增加内边距 */
     text-align: center; /* 在桌面上居中显示 */
     }
 
-    #filterBox input[type="text"],
-    #filterBox select,
-    #filterBox button {
+    body.desktop #filterBox input[type="text"],
+    body.desktop #filterBox select,
+    body.desktop #filterBox button {
     font-size: 18px; /* 增大字体大小 */
     margin: 8px; /* 调整控件之间的间距 */
     width: 80%; /* 控件宽度为父容器的80% */
@@ -89,45 +95,46 @@
     height: 40px; /* 控件高度 */
     }
 
-    /* 响应式设计：针对移动设备 */
-    @media (max-width: 768px) {
-        #filterBox {
-            padding: 20px; /* 减少内边距 */
-        }
+    /********************************/
+    /********** 移动端 ***************/
+    /********************************/
 
-        #filterBox input[type="text"],
-        #filterBox select,
-        #filterBox button {
-            width: 100%; /* 在移动设备上铺满容器 */
-            max-width: none; /* 移除最大宽度限制 */
-            height: 50px; /* 调整高度 */
-        }
-        
-        .modal-content {
-            /* 样式可以根据需要进行修改 */
-            display: flex;
-            flex-direction: row; /* 横向排列选项 */
-            flex-wrap: wrap; /* 换行 */
-            justify-content: space-between; /* 选项之间均匀分布 */
-        }
+    body.mobile #filterBox {
+        padding: 20px; /* 减少内边距 */
+    }
 
-        /* 设置每个选项的样式 */
-        .modal-content label {
-            /* 样式可以根据需要进行修改 */
-            flex-basis: calc(50% - 10px); /* 计算每个选项的宽度，减去间距 */
-            margin-bottom: 10px; /* 底部间距 */
-        }
+    body.mobile #filterBox input[type="text"],
+    body.mobile #filterBox select,
+    body.mobile #filterBox button {
+        width: 100%; /* 在移动设备上铺满容器 */
+        max-width: none; /* 移除最大宽度限制 */
+        height: 50px; /* 调整高度 */
+    }
+    
+    body.mobile .modal-content {
+        /* 样式可以根据需要进行修改 */
+        display: flex;
+        flex-direction: row; /* 横向排列选项 */
+        flex-wrap: wrap; /* 换行 */
+        justify-content: space-between; /* 选项之间均匀分布 */
+    }
 
-        /* 添加其他样式，根据需要进行修改 */
-        #myModal {
-            /* 样式可以根据需要进行修改 */
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            display: none; /* 初始状态隐藏myModal */
-        }
+    /* 设置每个选项的样式 */
+    body.mobile .modal-content label {
+        /* 样式可以根据需要进行修改 */
+        flex-basis: calc(50% - 10px); /* 计算每个选项的宽度，减去间距 */
+        margin-bottom: 10px; /* 底部间距 */
+    }
+
+    /* 添加其他样式，根据需要进行修改 */
+    body.mobile #myModal {
+        /* 样式可以根据需要进行修改 */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        display: none; /* 初始状态隐藏myModal */
     }
 
 
@@ -140,15 +147,15 @@
     <div id="filterBox">
         <input type="text" id="searchInput" oninput="filterData()" placeholder="筛选飞机号">
 
-        <select id="aircraftType" onchange="filterData()">
+        <select id="aircraftType" onchange="filterData('model')">
           <option value="">选择机型</option>
         </select>
         
-        <select id="engineType" onchange="filterData()">
+        <select id="engineType" onchange="filterData('engine')">
           <option value="">选择发动机型号</option>
         </select>
         
-        <select id="company" onchange="filterData()">
+        <select id="company" onchange="filterData('company')">
           <option value="">选择公司</option>
         </select>
         
@@ -585,7 +592,7 @@
             <tr><td>B-6528</td><td>A330-200</td><td>PW4170</td><td>CAN</td><td>124.5</td><td>108.4</td><td>43.5</td><td>238</td><td>6410</td><td>215</td><td>1500</td><td></td><td>/</td></tr>
             <tr><td>B-6531</td><td>A330-200</td><td>PW4170</td><td>CAN</td><td>124.6</td><td>108.4</td><td>43.4</td><td>238</td><td>6410</td><td>215</td><td>1500</td><td></td><td>/</td></tr>
             <tr><td>B-6547</td><td>A330-200</td><td>PW4170</td><td>CAN</td><td>124.3</td><td>108.4</td><td>43.7</td><td>238</td><td>6410</td><td>215</td><td>1500</td><td></td><td>/</td></tr>
-            <tr><td>B-1062</td><td>A330-300</td><td>TRENT772C</td><td>SZX</td><td>127.9</td><td>108.4</td><td>43.1</td><td>242</td><td>5590</td><td>215</td><td>1500</td><td>0</td><td>/</td></tr>
+            <tr><td>B-1062</td><td>A330-300</td><td>TRENT772C</td><td>SZX</td><td>127.9</td><td>108.4</td><td>43.1</td><td>242</td><td>5590</td><td>215</td><td>1500</td><td></td><td>/</td></tr>
             <tr><td>B-1063</td><td>A330-300</td><td>TRENT772C</td><td>SZX</td><td>127.8</td><td>108.4</td><td>43.2</td><td>242</td><td>5590</td><td>215</td><td>1500</td><td></td><td>/</td></tr>
             <tr><td>B-1065</td><td>A330-300</td><td>TRENT772C</td><td>PEK</td><td>128.1</td><td>108.4</td><td>42.9</td><td>242</td><td>5590</td><td>215</td><td>1500</td><td></td><td>/</td></tr>
             <tr><td>B-300U</td><td>A330-300</td><td>TRENT772C</td><td>PEK</td><td>127.9</td><td>108.4</td><td>43.1</td><td>242</td><td>5590</td><td>215</td><td>1500</td><td></td><td>/</td></tr>
@@ -943,23 +950,26 @@
             <td>B737<br>卫星电话</td><td colspan="12">
                 ON REG B-1520, B-1525, B-1700, B-1701, B-1718, B-1736, B-1737, B-1747, B-1748, B-1776, B-1780, B-1781, B-1782, B-1916, B-1917, B-1920, B-1921, B-1922, B-1923, B-1925, B-1950, B-1951, B-1952, B-1953, B-1955, B-1979, B-1980, B-2169, B-2620, B-2622, B-2693, B-2694, B-2695, B-2696, B-2697, B-2916, B-2917, B-5020, B-5021, B-5022, B-5040, B-5041, B-5042, B-5067, B-5068, B-5069, B-5070, B-5112, B-5113, B-5147, B-5149, B-5163, B-5165, B-5166, B-5189, B-5192, B-5195, B-5232, B-5239, B-5240, B-5241, B-5247, B-5250, B-5251, B-5252, B-5253, B-5300, B-5310, B-5339, B-5340, B-5356, B-5419, B-5420, B-5421, B-5445, B-5446, B-5468, B-5469, B-5586, B-5587, B-5596, B-5597, B-5598, B-5609, B-5641, B-5645, B-5675, B-5698, B-5699, B-5715, B-5716, B-5718, B-5719, B-5720, B-5721, B-5738, B-5739, B-5740, B-5741, B-5742, B-5743, B-5745, B-5746, B-5747, B-5748, B-5749, B-5766, B-5768, B-5769, B-5770, B-5836, B-5837, B-6067, B-6068, B-6069
                 <br> 
-                <span style="color: red;">(b)Check flight satellite phone at the appointed positon in the flight deck.
+                <span style="color: red;">(b)Check flight satellite phone at the appointed positon in the flight deck.</span>
                 <br>
-                检查手持式卫星电话在位。</span>
+                <span style="color: red;">检查手持式卫星电话在位。</span>
                 </td>
           </tr>
           <tr>
             <td>A320<br>卫星电话</td><td colspan="12">
-                ON REG B-1605,B-1606,B-1616,B-1625,B-1626,B-1650,B-1651,B-1652,B-1653,B-1690,B-1696,B-1697,B-1800,B-1801,B-1802,B-1803,B-1805,B-1806,B-1828,B-1829,B-1830,B-1831,B-1832,B-1843,B-1845,B-1846,B-1847,B-1848,B-1880,B-2280,B-2281,B-2282,B-2283,B-2284,B-2285,B-2287,B-2288,B-2353,B-2365,B-2366,B-2367,B-2369,B-2391,B-2392,B-2393,B-2395,B-2396,B-2406,B-2408,B-2417,B-2418,B-6019,B-6020,B-6021,B-6205,B-6207,B-6251,B-6252,B-6253,B-6255,B-6263,B-6265,B-6267,B-6269,B-6270,B-6271,B-6272,B-6273,B-6277,B-6279,B-6281,B-6282,B-6283,B-6287,B-6288,B-6289,B-6290,B-6291,B-6292,B-6293,B-6302,B-6303,B-6305,B-6306,B-6307,B-6308,B-6317,B-6318,B-6319,B-6339,B-6342,B-6343,B-6353,B-6355,B-6356,B-6378,B-6379,B-6389,B-6397,B-6398,B-6552,B-6553,B-6575,B-6577,B-6578,B-6579,B-6580,B-6581,B-6582,B-6583,B-6588,B-6622,B-6623,B-6625,B-6626,B-6627,B-6628,B-6629,B-6630,B-6651,B-6652,B-6653,B-6655,B-6657,B-6658,B-6659,B-6660,B-6661,B-6662,B-6663,B-6678,B-6680,B-6683,B-6685,B-6686,B-6687,B-6702,B-6703,B-6737,B-6739,B-6762,B-6766,B-6775,B-6776,B-6782,B-6783,B-6785,B-6786,B-6812,B-6813,B-6815,B-6816,B-6817,B-6826,B-6827,B-6896,B-6897,B-6908,B-6909,B-6910,B-6911,B-6912,B-6913,B-6945,B-6946,B-6975,B-6976,B-6977,B-6978,B-6979,B-9911,B-9912,B-9913,B-9915,B-9916,B-9917,B-9929,B-9930,B-9931,B-9933,B-9951,B-9952,B-9953,B-9958,B-9959,B-9960
-                SUBTASK 05-00-53-CSN-023
-                <br><span style="color: red;">
-                E.Take satellite phone back from flight deck.
+              ON REG B-1605,B-1606,B-1616,B-1625,B-1626,B-1650,B-1651,B-1652,B-1653,B-1690,B-1696,B-1697,B-1800,B-1801,B-1802,B-1803,B-1805,B-1806,B-1828,B-1829,B-1830,B-1831,B-1832,B-1843,B-1845,B-1846,B-1847,B-1848,B-1880,B-2280,B-2281,B-2282,B-2283,B-2284,B-2285,B-2287,B-2288,B-2353,B-2365,B-2366,B-2367,B-2369,B-2391,B-2392,B-2393,B-2395,B-2396,B-2406,B-2408,B-2417,B-2418,B-6019,B-6020,B-6021,B-6205,B-6207,B-6251,B-6252,B-6253,B-6255,B-6263,B-6265,B-6267,B-6269,B-6270,B-6271,B-6272,B-6273,B-6277,B-6279,B-6281,B-6282,B-6283,B-6287,B-6288,B-6289,B-6290,B-6291,B-6292,B-6293,B-6302,B-6303,B-6305,B-6306,B-6307,B-6308,B-6317,B-6318,B-6319,B-6339,B-6342,B-6343,B-6353,B-6355,B-6356,B-6378,B-6379,B-6389,B-6397,B-6398,B-6552,B-6553,B-6575,B-6577,B-6578,B-6579,B-6580,B-6581,B-6582,B-6583,B-6588,B-6622,B-6623,B-6625,B-6626,B-6627,B-6628,B-6629,B-6630,B-6651,B-6652,B-6653,B-6655,B-6657,B-6658,B-6659,B-6660,B-6661,B-6662,B-6663,B-6678,B-6680,B-6683,B-6685,B-6686,B-6687,B-6702,B-6703,B-6737,B-6739,B-6762,B-6766,B-6775,B-6776,B-6782,B-6783,B-6785,B-6786,B-6812,B-6813,B-6815,B-6816,B-6817,B-6826,B-6827,B-6896,B-6897,B-6908,B-6909,B-6910,B-6911,B-6912,B-6913,B-6945,B-6946,B-6975,B-6976,B-6977,B-6978,B-6979,B-9911,B-9912,B-9913,B-9915,B-9916,B-9917,B-9929,B-9930,B-9931,B-9933,B-9951,B-9952,B-9953,B-9958,B-9959,B-9960
+              SUBTASK 05-00-52-CSN-039
                 <br>
-                将驾驶舱内的手持式卫星电话取下。</span>
+                <span style="color: red;">G.Check flight satellite phone at the appointed position in the flight deck .</span>
+                <br>
+                <span style="color: red;">检查手持式卫星电话在位。</span>
             </td>
           </tr>
     </table>
-    <div id="updatedTime">数据来自SOC与工卡，更新时间：2024年1月5日</div>
+    <div id="updatedTime">
+      数据来自SOC与工卡，仅供参考，请以现行有效工卡为准<br>
+      更新时间：2024年1月5日
+    </div>
   <script>
 
     var firstRun = 1;
@@ -1026,57 +1036,65 @@
     }
 
 
-    function generateOptions() {
+    function generateOptions(category) {
+        // 公司信息仅第1次执行，公司选择：更新机型、发动机  机型选择：更新发动机  发动机选择：更新机型
         // 存储当前选中的值
-        const selectedAircraftType = aircraftTypeFilter.value;
-        const selectedEngineType = engineTypeFilter.value;
-        const selectedCompany = companyFilter.value;
+        
+        //company  model  engine
+        if(category === 'company' || category ==='model')
+        {
+          // 发动机型号选项
+          const engineTypeSelectedIndex = engineTypeFilter.selectedIndex;
+          const selectedEngineType = engineTypeFilter.value;
+          clearSelectOptions(engineTypeFilter);
+          const visibleEngineRows = Array.from(tableRows).filter(row => row.style.display !== 'none');
+          const engineTypesMap = new Map();
+          visibleEngineRows.forEach(row => {
+              const type = row.querySelectorAll('td')[2].textContent;
+              engineTypesMap.set(type, (engineTypesMap.get(type) || 0) + 1);
+          });
+          engineTypesMap.forEach((count, type) => {
+              const option = document.createElement('option');
+              option.textContent = `${type} (${count})`;
+              option.value = type;
+              engineTypeFilter.appendChild(option);
+          });
 
-        // 机型选项
-        const aircraftTypeSelectedIndex = aircraftTypeFilter.selectedIndex;
-        clearSelectOptions(aircraftTypeFilter);
-        const visibleAircraftRows = Array.from(tableRows).filter(row => row.style.display !== 'none');
-        const aircraftTypesMap = new Map();
-        visibleAircraftRows.forEach(row => {
-            const type = row.querySelectorAll('td')[1].textContent;
-            aircraftTypesMap.set(type, (aircraftTypesMap.get(type) || 0) + 1);
-        });
-        aircraftTypesMap.forEach((count, type) => {
-            const option = document.createElement('option');
-            option.textContent = `${type} (${count})`;
-            option.value = type;
-            aircraftTypeFilter.appendChild(option);
-        });
+          // 恢复之前选中的值
+          engineTypeFilter.selectedIndex = engineTypeSelectedIndex;
+          engineTypeFilter.value = selectedEngineType;
+        }
 
-        // 恢复之前选中的值
-        aircraftTypeFilter.selectedIndex = aircraftTypeSelectedIndex;
-        aircraftTypeFilter.value = selectedAircraftType;
-
-        // 发动机型号选项
-        const engineTypeSelectedIndex = engineTypeFilter.selectedIndex;
-        clearSelectOptions(engineTypeFilter);
-        const visibleEngineRows = Array.from(tableRows).filter(row => row.style.display !== 'none');
-        const engineTypesMap = new Map();
-        visibleEngineRows.forEach(row => {
-            const type = row.querySelectorAll('td')[2].textContent;
-            engineTypesMap.set(type, (engineTypesMap.get(type) || 0) + 1);
-        });
-        engineTypesMap.forEach((count, type) => {
-            const option = document.createElement('option');
-            option.textContent = `${type} (${count})`;
-            option.value = type;
-            engineTypeFilter.appendChild(option);
-        });
-
-        // 恢复之前选中的值
-        engineTypeFilter.selectedIndex = engineTypeSelectedIndex;
-        engineTypeFilter.value = selectedEngineType;
-
+        //company  model  engine
+        if(category === 'company' || category ==='engine')
+        {
+          // 机型选项
+          const aircraftTypeSelectedIndex = aircraftTypeFilter.selectedIndex;
+          const selectedAircraftType = aircraftTypeFilter.value;
+          clearSelectOptions(aircraftTypeFilter);
+          const visibleAircraftRows = Array.from(tableRows).filter(row => row.style.display !== 'none');
+          const aircraftTypesMap = new Map();
+          visibleAircraftRows.forEach(row => {
+              const type = row.querySelectorAll('td')[1].textContent;
+              aircraftTypesMap.set(type, (aircraftTypesMap.get(type) || 0) + 1);
+          });
+          aircraftTypesMap.forEach((count, type) => {
+              const option = document.createElement('option');
+              option.textContent = `${type} (${count})`;
+              option.value = type;
+              aircraftTypeFilter.appendChild(option);
+          });
+          
+          // 恢复之前选中的值
+          aircraftTypeFilter.selectedIndex = aircraftTypeSelectedIndex;
+          aircraftTypeFilter.value = selectedAircraftType;
+        }
 
         if(firstRun===1)
         {
             // 公司选项
-            const companySelectedIndex = companyFilter.selectedIndex;
+            //const selectedCompany = companyFilter.value;
+            //const companySelectedIndex = companyFilter.selectedIndex;
             clearSelectOptions(companyFilter);
             const visibleCompanyRows = Array.from(tableRows).filter(row => row.style.display !== 'none');
             const companiesMap = new Map();
@@ -1092,16 +1110,15 @@
             });
 
             // 恢复之前选中的值
-            companyFilter.selectedIndex = companySelectedIndex;
-            companyFilter.value = selectedCompany;
+            //companyFilter.selectedIndex = companySelectedIndex;
+            //companyFilter.value = selectedCompany;
             firstRun = 0;
         }
-
     }
 
 
 
-    function filterData() {
+    function filterData(category) {
         // 根据筛选条件进行过滤
         const filterText = searchInput.value.toLowerCase();
         const selectedAircraftType = aircraftTypeFilter.value;
@@ -1125,7 +1142,7 @@
                 row.style.display = 'none';
             }
         });
-        generateOptions();
+        generateOptions(category);
     }
 
 
@@ -1166,12 +1183,32 @@
       toggleModal(0);
     }
 
+
+    //判断移动端
+    function IsPC(){    
+      var userAgentInfo = navigator.userAgent;  
+      var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");    
+      var flag = true;    
+      for (var v = 0; v < Agents.length; v++) {    
+          if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; }    
+      }    
+    return flag;    
+ 	}  
+
+
     // 在页面加载完成时应用默认筛选
     window.onload = function() {
-      console.log("页面加载完成");
+      //设置body为电脑或桌面样式
+      if (IsPC()) {
+        document.body.classList.add('desktop');
+      } else {
+        document.body.classList.add('mobile');
+      }
+
+      //隐藏列
       applyFilters();
-      //filterData();
-      generateOptions();
+      //动态生成option
+      generateOptions('company');
     };
 
     // 其他事件处理程序和函数在此处添加
