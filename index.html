@@ -79,8 +79,8 @@
       // 在页面加载完成时应用默认筛选
       window.onload = function() {
         //设置body为电脑或桌面样式
-        //if (IsPC()) {
-        if (0) {
+        if (IsPC()) {
+        //if (0) {
           document.body.classList.add('desktop');
         } else {
           document.body.classList.add('mobile');
