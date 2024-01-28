@@ -117,10 +117,7 @@
             statusElement.innerText = isWorking ? '工作中' : '休息中';
         }
 
-        function updateFavicon() {
-            const favicon = document.getElementById('favicon');
-            favicon.href = isWorking ? 'work-icon.ico' : 'rest-icon.ico'; // 根据工作和休息状态更换图标
-        }
+        
 
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
@@ -138,7 +135,6 @@
                         playSound();
                         isWorking = !isWorking; // 切换工作和休息状态
                         updateStatus(); // 更新状态文本
-                        updateFavicon(); // 更新网页图标
                         time = isWorking ? workDuration * 60 : restDuration * 60; // 根据状态设置下一段时间
                         startTimer(); // 重新启动计时器
                     }
@@ -153,7 +149,6 @@
             isWorking = true; // 设置为工作状态
             isPaused = false; // 重置暂停状态
             updateStatus(); // 更新状态文本
-            updateFavicon(); // 更新网页图标
             time = workDuration * 60; // 设置工作时间
             updateTimer(); // 更新显示的时间字符串
             startTimer(); // 启动计时器
@@ -164,7 +159,6 @@
             isWorking = false; // 设置为休息状态
             isPaused = false; // 重置暂停状态
             updateStatus(); // 更新状态文本
-            updateFavicon(); // 更新网页图标
             time = restDuration * 60; // 设置休息时间
             updateTimer(); // 更新显示的时间字符串
             startTimer(); // 启动计时器
