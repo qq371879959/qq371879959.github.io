@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,7 +68,6 @@
     <div id="controls">
         <button class="button" onclick="startWork()">工作开始</button>
         <button class="button" onclick="startRest()">休息开始</button>
-        <button class="button" onclick="togglePause()">暂停</button>
     </div>
 
     <div id="settings">
@@ -84,7 +84,6 @@
     <script>
         let time = 25 * 60; // 初始时间，以秒为单位
         let isWorking = true; // 初始为工作状态
-        let isPaused = false; // 初始为未暂停状态
         let workDuration = 25; // 默认工作时间长度（分钟）
         let restDuration = 5; // 默认休息时间长度（分钟）
         let timerId; // 保存 requestAnimationFrame 的 ID
@@ -115,22 +114,20 @@
             let startTime;
             
             function update() {
-                if (!isPaused) {
-                    const currentTime = new Date().getTime();
-                    const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+                const currentTime = new Date().getTime();
+                const elapsedTime = Math.floor((currentTime - startTime) / 1000);
 
-                    time = isWorking ? workDuration * 60 - elapsedTime : restDuration * 60 - elapsedTime;
+                time = isWorking ? workDuration * 60 - elapsedTime : restDuration * 60 - elapsedTime;
 
-                    if (time <= 0) {
-                        playSound();
-                        isWorking = !isWorking;
-                        updateStatus();
-                        time = isWorking ? workDuration * 60 : restDuration * 60;
-                    }
-
-                    updateTimer();
-                    timerId = requestAnimationFrame(update);
+                if (time <= 0) {
+                    playSound();
+                    isWorking = !isWorking;
+                    updateStatus();
+                    time = isWorking ? workDuration * 60 : restDuration * 60;
                 }
+
+                updateTimer();
+                timerId = requestAnimationFrame(update);
             }
 
             startTime = new Date().getTime();
@@ -139,9 +136,7 @@
 
         function startWork() {
             stopTimer(); // 停止当前计时器
-            togglePause(1);
             isWorking = true; // 设置为工作状态
-            isPaused = false; // 重置暂停状态
             updateStatus(); // 更新状态文本
             time = workDuration * 60; // 设置工作时间
             updateTimer(); // 更新显示的时间字符串
@@ -150,9 +145,7 @@
 
         function startRest() {
             stopTimer(); // 停止当前计时器
-            togglePause(1);
             isWorking = false; // 设置为休息状态
-            isPaused = false; // 重置暂停状态
             updateStatus(); // 更新状态文本
             time = restDuration * 60; // 设置休息时间
             updateTimer(); // 更新显示的时间字符串
@@ -166,19 +159,7 @@
         function playSound() {
             audio.play();
         }
-
-        function togglePause(targetState) {
-            if(targetState==1){
-                isPaused = true;
-            }else if(targetState==0){
-                isPaused = false;
-            }else if(targetState==3){
-                isPaused = !isPaused;
-            }
-            isPaused = !isPaused;
-            const pauseButton = document.getElementById('controls').getElementsByTagName('button')[2];
-            pauseButton.innerText = isPaused ? '继续' : '暂停';
-        }
+        
 
         function saveSettings() {
             workDuration = parseInt(document.getElementById('workDuration').value, 10) || 25;
