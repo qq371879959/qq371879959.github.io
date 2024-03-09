@@ -11,6 +11,13 @@
       text-align: center; /* 居中显示按钮 */
     }
 
+    .pdf-container {
+      display: none; /* 初始隐藏容器 */
+      margin: 20px auto; /* 居中显示容器 */
+      max-width: 100%; /* 设置容器最大宽度 */
+      height: 90vh; /* 设置容器高度 */
+    }
+
     .pdf-button {
       display: block;
       margin: 2vh auto; /* 间隔5% height，上下间距相同 */
@@ -33,15 +40,45 @@
 </head>
 <body>
   <div>
-    <a class="pdf-button" href="sucai/cockpit_A320.pdf" target="_blank" download="false">A320</a>
-    <a class="pdf-button" href="sucai/cockpit_A330.pdf" target="_blank" download="false">A330</a>
-    <a class="pdf-button" href="sucai/cockpit_A350.pdf" target="_blank" download="false">A350</a>
+    <a class="pdf-button" href="#" onclick="showPdf('pdf-container-A320')">A320</a>
+    <a class="pdf-button" href="#" onclick="showPdf('pdf-container-A330')">A330</a>
+    <a class="pdf-button" href="#" onclick="showPdf('pdf-container-A350')">A350</a>
     <br>
-    <a class="pdf-button" href="sucai/cockpit_B737.pdf" target="_blank" download="false">B737NG (上)</a>
-    <a class="pdf-button" href="sucai/cockpit_B737.pdf" target="_blank" download="false">B737NG (下)</a>
-    <a class="pdf-button" href="sucai/cockpit_B737MAX.pdf" target="_blank" download="false">B737MAX (上)</a>
-    <a class="pdf-button" href="sucai/cockpit_B737MAX.pdf" target="_blank" download="false">B737MAX (下)</a>
-    <a class="pdf-button" href="sucai/cockpit_B787.pdf" target="_blank" download="false">B787</a>
+    <a class="pdf-button" href="#" onclick="showPdf('pdf-container-B737')">B737NG (上)</a>
+    <a class="pdf-button" href="#" onclick="showPdf('pdf-container-B737')">B737NG (下)</a>
+    <a class="pdf-button" href="#" onclick="showPdf('pdf-container-B737MAX')">B737MAX (上)</a>
+    <a class="pdf-button" href="#" onclick="showPdf('pdf-container-B737MAX')">B737MAX (下)</a>
+    <a class="pdf-button" href="#" onclick="showPdf('pdf-container-B787')">B787</a>
   </div>
+
+  <div class="pdf-container" id="pdf-container-A320">
+    <iframe src="sucai/cockpit_A320.pdf" width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+  <div class="pdf-container" id="pdf-container-A330">
+    <iframe src="sucai/cockpit_A330.pdf" width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+  <div class="pdf-container" id="pdf-container-A350">
+    <iframe src="sucai/cockpit_A350.pdf" width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+  <div class="pdf-container" id="pdf-container-B737">
+    <iframe src="sucai/cockpit_B737.pdf" width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+  <div class="pdf-container" id="pdf-container-B737MAX">
+    <iframe src="sucai/cockpit_B737MAX.pdf" width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+  <div class="pdf-container" id="pdf-container-B787">
+    <iframe src="sucai/cockpit_B787.pdf" width="100%" height="100%" frameborder="0"></iframe>
+  </div>
+
+  <script>
+    function showPdf(containerId) {
+      var containers = document.querySelectorAll('.pdf-container');
+      containers.forEach(function(container) {
+        container.style.display = 'none';
+      });
+      var pdfContainer = document.getElementById(containerId);
+      pdfContainer.style.display = 'block';
+    }
+  </script>
 </body>
 </html>
