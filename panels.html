@@ -29,33 +29,34 @@
       align-items: center; /* 垂直居中 */
     }
 
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
   </style>
 </head>
 <body>
   <div>
-    <a class="pdf-button" href="sucai/cockpit_A320.pdf">A320</a>
-    <a class="pdf-button" href="sucai/cockpit_A330.pdf">A330</a>
-    <a class="pdf-button" href="sucai/cockpit_A350.pdf">A350</a>
+    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_A320.pdf')">A320</a>
+    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_A330.pdf')">A330</a>
+    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_A350.pdf')">A350</a>
     <br>
-    <a class="pdf-button" href="sucai/cockpit_B737.pdf">B737NG (上)</a>
-    <a class="pdf-button" href="sucai/cockpit_B737.pdf">B737NG (下)</a>
-    <a class="pdf-button" href="sucai/cockpit_B737MAX.pdf">B737MAX (上)</a>
-    <a class="pdf-button" href="sucai/cockpit_B737MAX.pdf">B737MAX (下)</a>
-    <a class="pdf-button" href="sucai/cockpit_B787.pdf">B787</a>
+    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B737.pdf')">B737NG (上)</a>
+    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B737.pdf')">B737NG (下)</a>
+    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B737MAX.pdf')">B737MAX (上)</a>
+    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B737MAX.pdf')">B737MAX (下)</a>
+    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B787.pdf')">B787</a>
   </div>
 
   <script>
-    // 添加事件监听，确保在移动设备上也能正常工作
-    document.addEventListener("DOMContentLoaded", function() {
-      var pdfButtons = document.querySelectorAll('.pdf-button');
-      pdfButtons.forEach(function(button) {
-        button.addEventListener('click', function(event) {
-          event.preventDefault(); // 阻止默认行为，确保链接不会直接打开
-          var pdfUrl = this.getAttribute('href');
-          window.open(pdfUrl, '_blank'); // 在新标签页中打开 PDF 文件
-        });
-      });
-    });
+    function openPdf(pdfUrl) {
+      var newIframe = document.createElement('iframe');
+      newIframe.src = pdfUrl;
+      document.body.innerHTML = ''; // 清空当前页面的内容
+      document.body.appendChild(newIframe); // 将新的 iframe 添加到页面中
+    }
   </script>
 </body>
 </html>
