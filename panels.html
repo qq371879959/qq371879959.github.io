@@ -11,52 +11,72 @@
       text-align: center; /* 居中显示按钮 */
     }
 
-    .pdf-button {
-      display: block;
-      margin: 2vh auto; /* 间隔5% height，上下间距相同 */
+    .link{
+      align-items: center;
+      justify-content: space-between; /* 并排显示 */
+      margin-bottom: 3vh; /* 保持每行间距相同 */
+      width: 100%; /* 宽度70% viewport width */
+      align-items: center; /* 垂直居中 */
+    }
+    .image-link {
       text-decoration: none;
       color: blue;
       font-size: 25px; /* 调整字体大小 */
-      width: 65vw; /* 宽度70% viewport width */
-      height: 5vh; /* 高度20% viewport height */
-      max-width: 250px; /* 设置最大宽度，避免过大 */
       background-color: #f0f0f0; /* 背景色 */
       border: 2px solid #ccc; /* 边框 */
       border-radius: 5px; /* 边框圆角 */
       padding: 5px; /* 按钮内边距 */
-      display: flex; /* 使用flex布局 */
-      justify-content: center; /* 水平居中 */
-      align-items: center; /* 垂直居中 */
+      margin-left: 2vw; /* 保持每行间距相同 */
+
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .pdf-button {
+      text-decoration: none;
+      color: blue;
+      font-size: 25px; /* 调整字体大小 */
+      background-color: #f0f0f0; /* 背景色 */
+      border: 2px solid #ccc; /* 边框 */
+      border-radius: 5px; /* 边框圆角 */
+      padding: 5px; /* 按钮内边距 */
+      margin-left: 3vw; /* 保持每行间距相同 */
     }
 
+    .pdf-link {
+    }
   </style>
 </head>
 <body>
-  <div>
-    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_A320.pdf')">A320</a>
-    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_A330.pdf')">A330</a>
-    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_A350.pdf')">A350</a>
-    <br>
-    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B737.pdf')">B737NG (上)</a>
-    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B737.pdf')">B737NG (下)</a>
-    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B737MAX.pdf')">B737MAX (上)</a>
-    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B737MAX.pdf')">B737MAX (下)</a>
-    <a class="pdf-button" href="#" onclick="openPdf('sucai/cockpit_B787.pdf')">B787</a>
+  <div class="link">
+    <a class="image-link" href="sucai/cockpit_A320.jpg" target="_blank">A320.jpg</a>
+    <a class="pdf-button" href="sucai/cockpit_A320.pdf" target="_blank">.pdf</a>
   </div>
-
-  <script>
-    function openPdf(pdfUrl) {
-      var newIframe = document.createElement('iframe');
-      newIframe.src = pdfUrl;
-      document.body.innerHTML = ''; // 清空当前页面的内容
-      document.body.appendChild(newIframe); // 将新的 iframe 添加到页面中
-    }
-  </script>
+  <div class="link">
+    <a class="image-link" href="sucai/cockpit_A330.jpg" target="_blank">A330.jpg</a>
+    <a class="pdf-button" href="sucai/cockpit_A330.pdf" target="_blank">.pdf</a>
+  </div>
+  <div class="link">
+    <a class="image-link" href="sucai/cockpit_A350.jpg" target="_blank">A350.jpg</a>
+    <a class="pdf-button" href="sucai/cockpit_A350.pdf" target="_blank">.pdf</a>
+  </div>
+  <div class="link">
+    <a class="image-link" href="sucai/cockpit_B737(P5).jpg" target="_blank">B737NG (上).jpg</a>
+    <a class="pdf-button" href="sucai/cockpit_B737(P5).pdf" target="_blank">.pdf</a>
+  </div>
+  <div class="link">
+    <a class="image-link" href="sucai/cockpit_B737(P8).jpg" target="_blank">B737NG (下).jpg</a>
+    <a class="pdf-button" href="sucai/cockpit_B737(P8).pdf" target="_blank">.pdf</a>
+  </div>
+  <div class="link">
+    <a class="image-link" href="sucai/cockpit_B737MAX(P5).jpg" target="_blank">B737MAX (上).jpg</a>
+    <a class="pdf-button" href="sucai/cockpit_B737MAX(P5).pdf" target="_blank">.pdf</a>
+  </div>
+  <div class="link">
+    <a class="image-link" href="sucai/cockpit_B737MAX(P8).jpg" target="_blank">B737MAX (下).jpg</a>
+    <a class="pdf-button" href="sucai/cockpit_B737MAX(P8).pdf" target="_blank">.pdf</a>
+  </div>
+  <div class="link">
+    <a class="image-link" href="sucai/cockpit_B787.jpg" target="_blank">B787.jpg</a>
+    <a class="pdf-button" href="sucai/cockpit_B787.pdf" target="_blank">.pdf</a>
+  </div>
 </body>
 </html>
