@@ -8,37 +8,39 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
+      margin-left: 2vw; /* 保持每行间距相同 */
       text-align: center; /* 居中显示按钮 */
     }
 
     .link{
       align-items: center;
       justify-content: space-between; /* 并排显示 */
-      margin-bottom: 3vh; /* 保持每行间距相同 */
+      display: flex;
+      margin-bottom: 2vh; /* 保持每行间距相同 */
       width: 100%; /* 宽度70% viewport width */
       align-items: center; /* 垂直居中 */
     }
     .image-link {
       text-decoration: none;
       color: blue;
-      font-size: 25px; /* 调整字体大小 */
+      width: 55vw;
+      font-size: 6vw; /* 调整字体大小 */
       background-color: #f0f0f0; /* 背景色 */
       border: 2px solid #ccc; /* 边框 */
-      border-radius: 5px; /* 边框圆角 */
-      padding: 5px; /* 按钮内边距 */
-      margin-left: 2vw; /* 保持每行间距相同 */
+      border-radius: 2vw; /* 边框圆角 */
+      padding: 4vw; /* 按钮内边距 */
 
     }
 
     .pdf-button {
       text-decoration: none;
       color: blue;
-      font-size: 25px; /* 调整字体大小 */
+      width: 10vw;
+      font-size: 6vw; /* 调整字体大小 */
       background-color: #f0f0f0; /* 背景色 */
       border: 2px solid #ccc; /* 边框 */
-      border-radius: 5px; /* 边框圆角 */
-      padding: 5px; /* 按钮内边距 */
-      margin-left: 3vw; /* 保持每行间距相同 */
+      border-radius: 2vw; /* 边框圆角 */
+      padding: 4vw; /* 按钮内边距 */
     }
 
     .pdf-link {
@@ -46,6 +48,7 @@
   </style>
 </head>
 <body>
+	<br>
   <div class="link">
     <a class="image-link" href="sucai/cockpit_A320.jpg" target="_blank">A320.jpg</a>
     <a class="pdf-button" href="sucai/cockpit_A320.pdf" target="_blank">.pdf</a>
@@ -58,6 +61,7 @@
     <a class="image-link" href="sucai/cockpit_A350.jpg" target="_blank">A350.jpg</a>
     <a class="pdf-button" href="sucai/cockpit_A350.pdf" target="_blank">.pdf</a>
   </div>
+	<br>
   <div class="link">
     <a class="image-link" href="sucai/cockpit_B737(P5).jpg" target="_blank">B737NG (上).jpg</a>
     <a class="pdf-button" href="sucai/cockpit_B737(P5).pdf" target="_blank">.pdf</a>
